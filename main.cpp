@@ -7,60 +7,44 @@ using namespace std;
 #include <algorithm>
 #include <iostream>     // std::cout
 #include <numeric>
+#include <iostream>
+#include <vector>
+#include <utility>
 
 
 
-bool solutionDoge(vector<int> &P, vector<int> &T, vector<int> &A, vector<int> &B){
+int solutionMatrix(vector<int> &A){
 
-    /*
-     *  Modelling the undirected graph
-    */
+    auto width = A.size();
+    auto height = width;
 
-    // Data structure to store a graph edge
-    struct Edge {
-        int src, dest;
-    };
+    vector<vector<bool>> matrix;
 
-    auto M = A.size(); // numbers of connections / edges
-    auto N = P.size(); // numbers of persons/vertex
-
-    vector<Edge> edges(M); // Vector for storage the edges
-    vector<vector<int>> adj(N,vector<int>(0)); //Vector for storage the adjacent nodes
-
-    for(auto i = 0; i <= M; i++){
-        edges[i].src = A[i];
-        edges[i].dest = B[i];
+    for(auto colored : A){
+        vector<bool> temp(width);
+        fill(temp.begin(), temp.begin()+ colored, 1);
+        matrix.push_back(temp);
     }
 
-    // add edges to the undirected graph
-    for (auto &edge: edges)
-    {
-        // insert at the end
-        adj[edge.src].push_back(edge.dest);
+    return 1;
 
-        // uncomment the following code for undirected graph
-        adj[edge.dest].push_back(edge.src);
-    }
-
-    /*
-     * Breadth first search algorimth
-    */
-
-    return 0;
+}
 
 
+int adjacentElementsProduct(vector<int> inputArray) {
+    vector<int> temp (inputArray.size());
+
+    adjacent_difference(inputArray.begin(), inputArray.end(), temp.begin(), [](int a, int b){ return a*b;});
 
 
+    return *max_element(temp.begin() +1 , temp.end());
 }
 
 int main()
 {
-    std::vector<int> P {2, 2, 1, 1, 1};
-    std::vector<int> T {1, 1, 1, 2, 2 };
-    std::vector<int> A { 0, 1, 2, 3};
-    std::vector<int> B { 1, 2, 0, 4};
+    std::vector<int> A {1, 0, 1, 0, 1000};
 
-    std::cout << solutionDoge(P, T, A, B) << endl;
+    std::cout << adjacentElementsProduct(A) << endl;
 
     return 0;
 }

@@ -48,3 +48,9 @@ int missingElement(vector<int> &A) {
     return 1;
 
 }
+
+/*
+ *
+ * Si es solo un missing element se puede hacer lo siguiente:
+ * (n(n+1)/2) - Sum(begin, end) =  missing number
+ */

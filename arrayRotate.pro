@@ -7,6 +7,7 @@ SOURCES += \
         binaryGap.cpp \
         binarythree.cpp \
         countDiv.cpp \
+        dogeGraph.cpp \
         exceptionStoi.cpp \
         findMissingElement.cpp \
         findTwoSum.cpp \
