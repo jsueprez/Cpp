@@ -31,20 +31,13 @@ int solutionMatrix(vector<int> &A){
 }
 
 
-int adjacentElementsProduct(vector<int> inputArray) {
-    vector<int> temp (inputArray.size());
 
-    adjacent_difference(inputArray.begin(), inputArray.end(), temp.begin(), [](int a, int b){ return a*b;});
-
-
-    return *max_element(temp.begin() +1 , temp.end());
-}
 
 int main()
 {
-    std::vector<int> A {1, 0, 1, 0, 1000};
+    std::vector<vector<int>> A {{1,1,1,0}, {0,5,0,1}, {2,1,3,10}};
 
-    std::cout << adjacentElementsProduct(A) << endl;
+    //std::cout << matrixElementsSum(A) << endl;
 
     return 0;
 }
