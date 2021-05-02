@@ -1,15 +1,5 @@
 #include <bits/stdc++.h>
-#include <unordered_map>
-
-
 using namespace std;
-
-#include <algorithm>
-#include <iostream>     // std::cout
-#include <numeric>
-#include <iostream>
-#include <vector>
-#include <utility>
 
 
 
@@ -31,13 +21,19 @@ int solutionMatrix(vector<int> &A){
 }
 
 
-
-
 int main()
 {
-    std::vector<vector<int>> A {{1,1,1,0}, {0,5,0,1}, {2,1,3,10}};
+    std::vector<string> A {"abc",
+                        "ded"};
 
-    //std::cout << matrixElementsSum(A) << endl;
+    vector<int> a ={1, 1, 1};
+    vector<int> b ={2, 1, 1};
+
+    string s1 = "zaa";
+    string s2 = "adcaa";
+    int n = 1230;
+
+    //palindromeRearranging(s1);
 
     return 0;
 }
