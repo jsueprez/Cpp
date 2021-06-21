@@ -1,39 +1,37 @@
 #include <bits/stdc++.h>
+#include <algorithm>
 using namespace std;
 
 
 
-int solutionMatrix(vector<int> &A){
+bool isConsistent(vector<string> &phoneList){
 
-    auto width = A.size();
-    auto height = width;
-
-    vector<vector<bool>> matrix;
-
-    for(auto colored : A){
-        vector<bool> temp(width);
-        fill(temp.begin(), temp.begin()+ colored, 1);
-        matrix.push_back(temp);
+    for(auto &contact : phoneList){
+        //erase the contact name in the string
+        contact.erase(contact.begin(), contact.begin() + contact.find(' '));
+        //erase spaces in the string
+        contact.erase(remove_if(contact.begin(), contact.end(), [](unsigned char x){ return std::isspace(x);}), contact.end());
     }
 
-    return 1;
+    //Now we can sort the vector to compare numbers in ascending order
+     sort(phoneList.begin(), phoneList.end());
+
+     //Check every string against other.
+     for(unsigned int i = 1; i < phoneList.size(); i++){
+         if(phoneList[i].find(phoneList[i-1]) == 0) return false;
+     }
+
+     return true;
 
 }
 
 
 int main()
 {
-    std::vector<string> A {"abc",
-                        "ded"};
+    std::vector<string> phoneList {"Bob 91125426", "Alice 97625992", "Emergency 911"};
 
-    vector<int> a ={1, 1, 1};
-    vector<int> b ={2, 1, 1};
-
-    string s1 = "zaa";
-    string s2 = "adcaa";
-    int n = 1230;
-
-    //palindromeRearranging(s1);
+    auto result = isConsistent(phoneList);
+    cout << result << endl;
 
     return 0;
 }
